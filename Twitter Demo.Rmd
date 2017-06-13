@@ -1,0 +1,48 @@
+---
+title: "Twitter Demo"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## {load the packages we'll need}
+library("twitteR")
+library("dplyr")
+library("RSentiment")
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Connect to Twitter
+setup_twitter_oauth("bC257PP482as1FAKSljy2CSmQ", "v2pWupMZmpD9ahdXwqP1wTgTWmPycaEoxV4vahtfy0DtzQyof5", access_token="14299213-07CFKSd3kWzooJaNR6COub99h2AbW4fM338frFJNN", access_secret=
+"2Eqbl3pe77zPnBTNH2cYbZsBzQxHfdKut0ozx5vHlBj2Z")
+
+## Search for Hagerty and Cars
+## tweetDF <- searchTwitteR("to:Hagerty+cars", since="2017-01-01", resultType="recent")
+
+## Search for tweets to Hagerty
+tweetDF <- searchTwitteR("Dodge+Demon", since="2016-01-01", resultType="popular")
+
+## Convert from Twitter list of results to data frame
+tweetDF2 <- twListToDF(tweetDF)
+
